@@ -72,4 +72,48 @@ router.post("/login",async (req,res) => {
     }
 })
 
+// router.post("/login", async (req, res) => {
+//     try {
+//       const employee = await Employee.findOne({
+//         employeeId: req.body.employeeId,
+//       });
+//       if (!employee) {
+//         return res.status(200).send({
+//           message: "Employee not found",
+//           success: false,
+//         });
+//       }
+//       const isMatch = await bcrypt.compare(req.body.password, employee.password);
+//       if (!isMatch) {
+//         return res.status(200).send({
+//           message: "Invalid password",
+//           success: false,
+//         });
+//       }
+//       if (employee.isApproved === false) {
+//         return res.status(200).send({
+//           message: "Your account is not approved yet",
+//           success: false,
+//         });
+//       }
+  
+//       const token = jwt.sign(
+//         { employeeId: employee._id },
+//         process.env.jwt_secret,
+//         { expiresIn: "24h" }
+//       );
+//       res.status(200).send({
+//         message: "Login successful",
+//         success: true,
+//         data: token,
+//       });
+//     } catch (error) {
+//       res.status(500).send({
+//         message: error.message,
+//         success: false,
+//       });
+//     }
+//   });
+  
+
 module.exports = router;

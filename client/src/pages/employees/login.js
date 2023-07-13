@@ -2,25 +2,28 @@ import { Form, Input } from "antd";
 import React from "react";
 import { Link} from "react-router-dom";
 import axios from "axios";
+import { HideLoading, ShowLoading } from "../../redux/alerts";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
-const onFinish = async(values) => {
-    try {
-        const response =await axios.post("/api/employees/login",values);
-        if(response.data.success)
-        {
-            localStorage.setItem("token", response.data.data);
-            alert(response.data.message);
-        }
-        else
-        alert(response.data.message);
-
-    } catch (error) {
-        alert(error.message);
-    }
-}
 
 function Login() {
-  
+    const dispatch = useDispatch();
+
+    const onFinish = async (values) => {
+        try {
+            dispatch(ShowLoading());
+          const response = await axios.post("/api/employees/login", values);
+          dispatch(HideLoading());
+          if (response.data.success) {
+            toast.success(response.data.message);
+          } else toast.error(response.data.message);
+        } catch (error) {
+            dispatch(HideLoading());
+            toast.error(error.message);
+        }
+      };
+
   return (
     <div className="primary d-flex align-items-center justify-content-center h-screen" >
       <Form layout="vertical w-400 white p-4"  onFinish={onFinish}>
@@ -45,3 +48,6 @@ function Login() {
 }
 
 export default Login;
+
+
+
