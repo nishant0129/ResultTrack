@@ -3,7 +3,7 @@ const router = express.Router();
 const Employee = require("../models/employeeModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const authMiddleware = require("../middlewares/authMiddleware");
 
 router.post("/register", async (req, res) => {
   try {
@@ -70,7 +70,7 @@ router.post("/login",async (req,res) => {
             success: false
         });
     }
-})
+});
 
 // router.post("/login", async (req, res) => {
 //     try {
@@ -115,5 +115,64 @@ router.post("/login",async (req,res) => {
 //     }
 //   });
   
+// get employee by id
 
-module.exports = router;
+// router.post("/get-employee-by-id", authMiddleware, async (req, res) => {
+//     try {
+//       console.log(req.body);
+//       const employee = await Employee.findOne({
+//         // _id: req.body.employeeId,
+//         employeeId: req.body.employeeId,
+//       });
+//       if (!employee) {
+//         return res.status(200).send({
+//           message: "Employee not found",
+//           success: false,
+//         });
+//       }
+//       employee.password = undefined;
+//       res.status(200).send({
+//         message: "Employee found",
+//         success: true,
+//         data: employee,
+//       });
+//     } catch (error) {
+//       res.status(500).send({
+//         message: error.message,
+//         success: false,
+//       });
+//     }
+//   }),
+router.post("/get-employee-by-id", authMiddleware, async (req, res) => {
+    try {
+        console.log(req.body);
+      const employee = await Employee.findOne({
+        _id : req.body.employeeId,
+      });
+      if (!employee) {
+        return res.status(200).send({
+          message: "Employee not found",
+          success: false,
+        });
+      }
+      employee.password = undefined;
+      res.status(200).send({
+        message: "Employee found",
+        success: true,
+        data: employee,
+      });
+    } catch (error) {
+      res.status(500).send({
+        message: error.message,
+        success: false,
+      });
+    }
+  });
+  
+// module.exports = router;
+
+
+
+  
+  module.exports = router;
+  

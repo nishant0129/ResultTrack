@@ -8,6 +8,8 @@ import "./style/layout.css";
 import { useSelector } from "react-redux";
 import Spinner from "./components/Spinner";
 import{ Toaster} from 'react-hot-toast'
+import EmployeeHome from "./pages/employees/EmployeeHome";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
 
     const { loading } = useSelector((state) => state.alert);
@@ -18,12 +20,13 @@ function App() {
      <Toaster/>
       <BrowserRouter>
         <Routes>
-            <Route path="/home" element={<Home/>}/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
-
-        </Routes>
+            <Route path="/employee" element={ <ProtectedRoute> <EmployeeHome /> </ProtectedRoute>}/>
+        </Routes> 
       </BrowserRouter>
+       
     </div>
   );
 }

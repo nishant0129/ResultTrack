@@ -16,6 +16,7 @@ function Login() {
           const response = await axios.post("/api/employees/login", values);
           dispatch(HideLoading());
           if (response.data.success) {
+            localStorage.setItem("token", response.data.data);
             toast.success(response.data.message);
           } else toast.error(response.data.message);
         } catch (error) {
@@ -48,6 +49,3 @@ function Login() {
 }
 
 export default Login;
-
-
-
