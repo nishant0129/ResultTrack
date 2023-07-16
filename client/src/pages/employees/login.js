@@ -16,7 +16,7 @@ function Login() {
       dispatch(HideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
-        localStorage.setItem("token", response.data.data);
+         localStorage.setItem("token", response.data.data);
         navigate("/employee");
       } else {
         toast.error(response.data.message);

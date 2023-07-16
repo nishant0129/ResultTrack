@@ -14,12 +14,12 @@ function EmployeeHome() {
               navigate("/employee/students");
             }}
           >
-            <img
+            {/* <img
               src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png"
               alt=""
               height={50}
               width={50}
-            />
+            /> */}
             <h1>Students</h1>
           </div>
         </Col>
@@ -30,12 +30,12 @@ function EmployeeHome() {
               navigate("/employee/results");
             }}
           >
-            <img
+            {/* <img
               src="https://cdn-icons.flaticon.com/png/512/2065/premium/2065169.png?token=exp=1660472205~hmac=65be9fe291719a7d5be1b80c75fc0989"
               alt=""
               height={50}
               width={50}
-            />
+            /> */}
             <h1>Results</h1>
           </div>
         </Col>
