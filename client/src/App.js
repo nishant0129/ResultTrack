@@ -14,6 +14,9 @@ import Students from "./pages/employees/Students";
 import AddStudent from "./pages/employees/AddStudent.js";
 import EditStudent from "./pages/employees/EditStudent";
 import PublicRoute from "./components/PublicRoute";
+import Results from "./pages/employees/Results";
+import AddResult from "./pages/employees/AddResult";
+import EditResult from "./pages/employees/EditResult";
 
 function App() {
 
@@ -34,7 +37,11 @@ function App() {
             <Route path="/employee/students/add" element={<ProtectedRoute> <AddStudent /> </ProtectedRoute>}/>
             <Route path="/employee/students/edit/:rollNo" element={<ProtectedRoute><EditStudent />
             </ProtectedRoute> }/>
-            
+            <Route path="/employee/results" element={<ProtectedRoute><Results /></ProtectedRoute>}/>
+            <Route path="/employee/results/add" element={<ProtectedRoute><AddResult /></ProtectedRoute>}/>
+            <Route path="/employee/results/edit/:resultId" element={ <ProtectedRoute><EditResult />
+            </ProtectedRoute>} />
+
         </Routes> 
       </BrowserRouter>
        
