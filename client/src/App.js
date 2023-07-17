@@ -17,6 +17,7 @@ import PublicRoute from "./components/PublicRoute";
 import Results from "./pages/employees/Results";
 import AddResult from "./pages/employees/AddResult";
 import EditResult from "./pages/employees/EditResult";
+import ResultCheck from "./pages/ResultCheck";
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
             <Route path="/employee/results/add" element={<ProtectedRoute><AddResult /></ProtectedRoute>}/>
             <Route path="/employee/results/edit/:resultId" element={ <ProtectedRoute><EditResult />
             </ProtectedRoute>} />
-
+            <Route path="/result/:resultId" element={<ResultCheck />} />
         </Routes> 
       </BrowserRouter>
        
