@@ -15,6 +15,7 @@ const path = require("path");
 // const port = process.env.PORT || 5000;
 // app.listen(port, () => console.log(`Node JS app listening on port ${port}!`));
 const port = process.env.PORT || 5000;
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
