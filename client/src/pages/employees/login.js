@@ -36,10 +36,23 @@ function Login() {
         <Form.Item name="employeeId" label="Employee ID">
           <Input />
         </Form.Item>
-        <Form.Item name="password" label="Password">
-          <Input type="password" />
+      
+        <Form.Item
+          name="password"
+          label="Password"
+          rules={[
+            {
+              required: true,
+              message: "Please enter your password",
+            },
+            {
+              min: 7,
+              message: "Password must be at least 7 characters",
+            },
+          ]}
+        >
+          <Input.Password />
         </Form.Item>
-
         <button className="primary text-white px-5 my-2 w-100">Login</button>
         <Link to="/register" className="text-mini text-black">
           Not yet Registered , Click Here To Register
